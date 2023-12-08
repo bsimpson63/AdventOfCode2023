@@ -5,6 +5,7 @@ pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet"""
 
+
 def part1():
     def get_num(line):
         first = next(c for c in line if c.isdigit())
@@ -14,8 +15,9 @@ def part1():
     with open(Path(__file__).with_name("input.txt")) as f:
         INPUT = f.read()
 
-    s = sum(get_num(line) for line in INPUT.strip().split('\n'))
+    s = sum(get_num(line) for line in INPUT.strip().split("\n"))
     print(s)
+
 
 NUMBERS = {
     "one": 1,
@@ -30,10 +32,8 @@ NUMBERS = {
     "zero": 0,
 }
 
-NUMBERS_REVERSED = {
-    num_str[::-1]: num
-    for num_str, num in NUMBERS.items()
-}
+NUMBERS_REVERSED = {num_str[::-1]: num for num_str, num in NUMBERS.items()}
+
 
 def part2():
     INPUT_SHORT = """two1nine
@@ -43,7 +43,7 @@ xtwone3four
 4nineeightseven2
 zoneight234
 7pqrstsixteen"""
-    
+
     def find_number(text, numbers):
         if text[0].isdigit():
             return int(text[0])
@@ -60,8 +60,9 @@ zoneight234
     with open(Path(__file__).with_name("input.txt")) as f:
         INPUT = f.read()
 
-    s = sum(get_num(line) for line in INPUT.strip().split('\n'))
+    s = sum(get_num(line) for line in INPUT.strip().split("\n"))
     print(s)
+
 
 if __name__ == "__main__":
     part2()

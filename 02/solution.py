@@ -19,9 +19,10 @@ MAXIMUMS = {
     "blue": 14,
 }
 
+
 def parse(line):
     game_str, _, group_strs = line.partition(": ")
-    game = int(game_str[len("Game "):])
+    game = int(game_str[len("Game ") :])
     groups = []
     for group_str in group_strs.split("; "):
         counts = {}
@@ -38,26 +39,29 @@ def part1():
         return all(count <= MAXIMUMS[color] for color, count in group.items())
 
     count = 0
-    for line in INPUT_LONG.split('\n'):
+    for line in INPUT_LONG.split("\n"):
         game, groups = parse(line)
         if all(is_valid(group) for group in groups):
             count += game
     print(count)
 
+
 def part2():
     def find_minimums(groups):
         def find_max(color):
             return max(group.get(color, 0) for group in groups)
+
         return {color: find_max(color) for color in ("red", "green", "blue")}
 
     count = 0
-    for line in INPUT_LONG.split('\n'):
+    for line in INPUT_LONG.split("\n"):
         _, groups = parse(line)
         minimums = find_minimums(groups)
         power = reduce(mul, minimums.values(), 1)
         count += power
 
     print(count)
+
 
 if __name__ == "__main__":
     part2()
